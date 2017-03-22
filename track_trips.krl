@@ -17,7 +17,7 @@ A ruleset for Track Trips
   }
 
   rule process_trip {
-    select when echo message
+    select when car new_trip
 	pre {
 	  mileage = event:attr("mileage").klog("our mileage is: ")
 	}
