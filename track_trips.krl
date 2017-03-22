@@ -23,8 +23,10 @@ A ruleset for Track Trips
 	}
     send_directive("trip") with
       trip_length = mileage
-	raise echo event "messages"
-	  attributes event.attrs()
+	fired {
+	  raise echo event "messages"
+	    attributes event.attrs()
+	}
   }
   
     rule process_trip {
