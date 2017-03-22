@@ -23,5 +23,17 @@ A ruleset for Track Trips
 	}
     send_directive("trip") with
       trip_length = mileage
+	fired {
+	  raise explicit event "trip_processed"
+	    attributes event:attrs()
+	}
   }
+  
+    rule trip_processed {
+    select when explicit trip_processed
+	pre {
+	  mileage = event:attr("mileage").klog("our mileage is: ")
+	}
+    send_directive("trip") with
+      trip_length = mileage
 }
