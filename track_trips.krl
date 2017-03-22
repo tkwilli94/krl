@@ -14,7 +14,7 @@ A ruleset for Track Trips
       msg = "Hello " + obj;
       msg
     }
-	long_trip = 20
+    long_trip = 20
   }
 
   rule process_trip {
@@ -38,8 +38,9 @@ A ruleset for Track Trips
 	}
     send_directive("trip") with
       trip_length = mileage
-	fired {
-	  ent:long_trip := mileage if (mileage > ent:long_trip)
-      ent:long_trip.klog("New Best Mileage: ")
-	}
+    fired {
+      long_trip = mileage if (mileage > long_trip);
+      long_trip.klog("New Best Mileage: ")
+    }
+  }
 }
