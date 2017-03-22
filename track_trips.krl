@@ -23,9 +23,5 @@ A ruleset for Track Trips
 	}
     send_directive("trip") with
       trip_length = mileage
-	fired {
-	  raise explicit event "trip_processed"
-	    attributes event.attrs()
-	}
   }
 }
