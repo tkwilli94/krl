@@ -34,7 +34,7 @@ A ruleset for Track Trips
     select when explicit trip_processed
     pre {
 	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
-      notnewbest = (mileage.as("Number").klog("mileage: ") <= ent:long_trip.klog("long: "))
+      notnewbest = (mileage.as("Number").klog("mileage: ") > ent:long_trip.klog("long: "))
 	}
     if notnewbest then
       send_directive("trip") with
