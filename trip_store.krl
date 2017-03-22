@@ -23,7 +23,7 @@ A ruleset for Trip Storing
 	}
 	fired {
 	  ent:long_trips := {} if ent:long_trips.isnull();
-	  ent:long_trips.klog("ent:long_trips: ")
+	  ent:long_trips.klog("ent:long_trips: ");
 	  ent:long_trips.put([timestamp], mileage)
 	}
   }
