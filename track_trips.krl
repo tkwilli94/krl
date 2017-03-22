@@ -26,6 +26,9 @@ A ruleset for Track Trips
 	fired {
 	  raise explicit event "trip_processed"
 	    attributes event.attrs()
+	} else {
+	  raise explicit event "trip_processed"
+	    attributes event.attrs()
 	}
   }
   
