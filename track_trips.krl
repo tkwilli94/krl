@@ -24,7 +24,7 @@ A ruleset for Track Trips
     send_directive("trip") with
       trip_length = mileage
 	fired {
-      ent:long_trip := 20 if ent:long_trip.isnull();
+      ent:longest_trip := 0 if ent:longest_trip.isnull();
 	  raise explicit event "trip_processed"
 	    attributes event:attrs()
 	}
@@ -34,7 +34,7 @@ A ruleset for Track Trips
     select when explicit trip_processed
     pre {
 	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
-      notnewbest = (mileage.as("Number").klog("mileage: ") <= ent:long_trip.klog("long: "))
+      notnewbest = (mileage.as("Number").klog("mileage: ") <= ent:longest_trip.klog("long: "))
 	}
     if notnewbest then
       send_directive("trip") with
@@ -53,8 +53,8 @@ A ruleset for Track Trips
 	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
 	}
     fired {
-      ent:long_trip := mileage.as("Number");
-      ent:long_trip.klog("New Best Mileage: ")
+      ent:longest_trip := mileage.as("Number");
+      ent:longest_trip.klog("New Best Mileage: ")
     }
   }
 }
