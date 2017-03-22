@@ -38,7 +38,7 @@ A ruleset for Track Trips
 	  mileage = event:attr("mileage").defaultsTo("40")
 	  notnewhigh = mileage.as("Number") < ent:long_trip.defaultsTo(50)
 	}
-	noop();
+	noop()
 	fired {
 	  raise explicit event "found_long_trip"
 		attributes event.attrs()
@@ -50,7 +50,7 @@ A ruleset for Track Trips
 	pre {
 	  mileage = event:attr("mileage").defaultsTo("40")
 	}
-	noop();
+	noop()
     fired {
       ent:long_trip := mileage
     }
