@@ -19,7 +19,7 @@ A ruleset for Track Trips
   rule process_trip {
     select when car new_trip
 	pre {
-	  mileage = event:attr("mileage").defaultsTo("200").klog("our mileage is: ")
+	  mileage = event:attr("mileage").klog("our mileage is: ")
 	}
     send_directive("trip") with
       trip_length = mileage
