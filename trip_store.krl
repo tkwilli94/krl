@@ -22,8 +22,8 @@ A ruleset for Trip Storing
       mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
 	}
 	fired {
-	  ent:long_trips := {} if ent:long_trips.isnull();
-	  ent:long_trips.put([timestamp], mileage)
+	  ent:all_trips := {} if ent:all_trips.isnull();
+	  ent:all_trips.put([timestamp], mileage)
 	}
   }
   
@@ -33,8 +33,8 @@ A ruleset for Trip Storing
       mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
 	}
     fired {
-	  ent:all_trips := {} if ent:long_trips.isnull();
-	  ent:all_trips.put([timestamp], mileage)
+	  ent:long_trips := {} if ent:long_trips.isnull();
+	  ent:long_trips.put([timestamp], mileage)
 	}
   }
   
