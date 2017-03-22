@@ -34,9 +34,7 @@ A ruleset for Track Trips
   
   rule find_long_trips {
     select when car trip_processed
-	pre {
-	  mileage = event:attr("mileage").defaultsTo("40")
-	  notnewhigh = mileage.as("Number") < ent:long_trip.defaultsTo(50)
-	}
+    send_directive("trip") with
+      trip_length = mileage
   }
 }
