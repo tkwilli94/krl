@@ -38,21 +38,5 @@ A ruleset for Track Trips
 	  mileage = event:attr("mileage").defaultsTo("40")
 	  notnewhigh = mileage.as("Number") < ent:long_trip.defaultsTo(50)
 	}
-
-	fired {
-	  raise explicit event "found_long_trip"
-		attributes event.attrs()
-	}
-  }
-  
-  rule found_long_trip {
-    select when car found_long_trip
-	pre {
-	  mileage = event:attr("mileage").defaultsTo("40")
-	}
-
-    fired {
-      ent:long_trip := mileage
-    }
   }
 }
