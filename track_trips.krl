@@ -19,8 +19,7 @@ A ruleset for Track Trips
   rule process_trip {
     select when car new_trip
 	pre {
-	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
-	  mileage.klog("Mileage is: ")
+	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage").klog("Mileage is: ")
 	}
     send_directive("trip") with
       trip_length = mileage
@@ -34,8 +33,7 @@ A ruleset for Track Trips
   rule trip_processed {
     select when explicit trip_processed
     pre {
-	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
-	  mileage.klog("Mileage is: ")
+	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage").klog("Mileage is: ")
       newbest = mileage.as("Number") > ent:long_trip
 	}
     if newbest then
@@ -52,9 +50,7 @@ A ruleset for Track Trips
   rule found_long_trip {
     select when explicit found_long_trip
 	pre {
-	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
-  	  mileage.klog("Mileage is: ")
-
+	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage").klog("Mileage is: ")
 	}
     fired {
       ent:long_trip := mileage.as("Number");
