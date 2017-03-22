@@ -20,6 +20,7 @@ A ruleset for Track Trips
     select when car new_trip
 	pre {
 	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
+	  mileage.klog("Mileage is: ")
 	}
     send_directive("trip") with
       trip_length = mileage
@@ -34,6 +35,7 @@ A ruleset for Track Trips
     select when explicit trip_processed
     pre {
 	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
+	  mileage.klog("Mileage is: ")
       newbest = mileage.as("Number") > ent:long_trip
 	}
     if newbest then
@@ -51,6 +53,8 @@ A ruleset for Track Trips
     select when explicit found_long_trip
 	pre {
 	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
+  	  mileage.klog("Mileage is: ")
+
 	}
     fired {
       ent:long_trip := mileage.as("Number");
