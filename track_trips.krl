@@ -31,10 +31,4 @@ A ruleset for Track Trips
 	    attributes event.attrs()
 	}
   }
-  
-  rule find_long_trips {
-    select when car trip_processed
-    send_directive("trip") with
-      trip_length = mileage
-  }
 }
