@@ -1,8 +1,8 @@
-ruleset track_tips {
+ruleset track_trips {
   meta {
-    name "Track Tips"
+    name "Track Trips"
     description <<
-A ruleset for Track Tips
+A ruleset for Track Trips
 >>
     author "Tommy Williams"
     logging on
