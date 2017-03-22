@@ -38,6 +38,7 @@ A ruleset for Track Trips
     send_directive("trip") with
       trip_length = mileage
     fired {
+	  ent:long_trip := 20 if ent:long_trip == undefined;
       ent:long_trip := mileage.as("Number") if (mileage.as("Number") > ent:long_trip);
       ent:long_trip.klog("New Best Mileage: ")
     }
