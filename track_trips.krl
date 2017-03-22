@@ -24,7 +24,6 @@ A ruleset for Track Trips
     send_directive("trip") with
       trip_length = mileage
 	fired {
-	} else {
 	  raise explicit event "trip_processed"
 	    attributes event.attrs()
 	}
@@ -40,7 +39,6 @@ A ruleset for Track Trips
 	  send_directive("short_trip")
 	    with mileage = mileage
 	fired {
-	} else {
 	  raise explicit event "found_long_trip"
 		attributes event.attrs()
 	}
