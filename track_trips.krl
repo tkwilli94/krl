@@ -19,7 +19,9 @@ A ruleset for Track Trips
   rule process_trip {
     select when car new_trip
 	pre {
-	  mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
+      mileage = event:attr("mileage").isnull() => "20" | event:attr("mileage")
+      a = ent:longest_trip.klog("longest:" )
+      b = ent:longest_trip.klog("Looooongest:")
 	}
     send_directive("trip") with
       trip_length = mileage
@@ -55,6 +57,14 @@ A ruleset for Track Trips
     fired {
       ent:longest_trip := mileage.as("Number");
       ent:longest_trip.klog("New Best Mileage: ")
+    }
+  }
+  
+  rule clear_trips {
+    select when car trip_reset
+    fired {
+	  ent:longest_trip := 0;
+	  ent:longest_trip.klog("Longest Trip Reset To: ")
     }
   }
 }
