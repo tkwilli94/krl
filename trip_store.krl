@@ -2,7 +2,6 @@ ruleset trip_store {
   meta {
     name "Trip Storage"
 	provides trips, long_trips, short_trips
-	shares trips, long_trips, short_trips
     description <<
 A ruleset for Trip Storing
 >>
