@@ -7,10 +7,18 @@ A ruleset for Trip Storing
 >>
     author "Tommy Williams"
     logging on
-    shares trips, hello, long_trips, short_trips
+    shares trips, hello, long_trips, short_trips, __testing
   }
 
   global {
+    __testing = { "queries": [ { "name": "trips" },
+                               { "name": "long_trips"},
+                               { "name": "short_trips"} ],
+                  "events":  [ { "domain": "explicit", "type": "trip_processed", "attrs": ["mileage"] },
+                               { "domain": "explicit", "type": "found_long_trip", "attrs": ["mileage"] },
+                               { "domain": "car", "type": "trip_reset"} 
+                             ]
+                }
     hello = function(obj) {
       msg = "Hello " + obj;
       msg

@@ -6,10 +6,16 @@ A ruleset for Track Trips
 >>
     author "Tommy Williams"
     logging on
-    shares process_trip
+    shares process_trip, __testing
   }
 
   global {
+    __testing = { "queries": [],
+                  "events":  [ { "domain": "car", "type": "new_trip", "attrs": ["mileage"] },
+                               { "domain": "explicit", "type": "trip_processed", "attrs": ["mileage"] },
+                               { "domain": "explicit", "type": "found_long_trip", "attrs": ["vehicle_id"]}
+  			                 ]
+                }
     hello = function(obj) {
       msg = "Hello " + obj;
       msg
